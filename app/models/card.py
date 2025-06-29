@@ -7,7 +7,7 @@ class Card:
         self.current_installments = 0.0
         self.id = id
 
-    def add_to_invoice(self, value, installmnets = 1):
+    def add_to_invoice(self, local,value, installmnets = 1):
         if value <= 0:
             return print("Adicione um valor válido")
 
@@ -15,8 +15,10 @@ class Card:
         if installmnets == 1:
             self.current_invoice += value
             self.limit -= value
+            self.local = local
             return self.current_invoice
         else:
+            self.local = local
             self.limit -= value
             installments_value = value/installmnets
             self.current_invoice += installments_value
